@@ -51,7 +51,7 @@ while (verificacao):
         if (confirma_escolha in 'Ss'):
             print(f'Seu saldo atual é {conta_usuario} reais.')
         else:
-            verificacao = False
+            break
 
     else:
         while(escolha_menu != 1 and escolha_menu != 2):
