@@ -1,12 +1,7 @@
 # Simulador de Caixa Eletrônico
 
 conta_usuario = 0
-valor_saque = 0
-valor_deposito = 0
 verificacao = True
-confirma_escolha = 'S'
-
-
 
 while (verificacao):
 
@@ -19,14 +14,14 @@ while (verificacao):
         if (confirma_escolha in 'Ss'):
             valor_saque = float(input('Digite o valor para saque: '))
             if (valor_saque > 0 and conta_usuario >= valor_saque):
-                conta_usuario = conta_usuario - valor_saque
+                conta_usuario += valor_saque
                 print(f'Saque realizado no valor de {valor_saque} reais, saldo disponível R$ {conta_usuario}')
             else:
                 while (valor_saque > conta_usuario):
                     print(f'Não é possível realizar a operação, seu saldo atual é de R$ {conta_usuario}')
                     valor_saque = float(input('Digite novamente o valor para saque: '))
                 if (valor_saque > 0 and conta_usuario >= valor_saque):
-                    conta_usuario = conta_usuario - valor_saque
+                    conta_usuario += valor_saque
                     print(f'Saque realizado no valor de {valor_saque} reais, saldo disponível R$ {conta_usuario} .')
         else:
             break
@@ -36,14 +31,14 @@ while (verificacao):
         if (confirma_escolha in 'Ss'):
             valor_deposito = float(input('Digite o valor que deseja depositar: '))
             if (valor_deposito > 0):
-                conta_usuario = conta_usuario + valor_deposito
+                conta_usuario += valor_deposito
                 print(f'Operação realizada, você depositou R$ {valor_deposito}. Seu saldo atual é R$ {conta_usuario}')
             else:
                 while(valor_deposito <= 0):
                     print('Valor inválido, insira uma quantidade maior que 0.')
                     valor_deposito = float(input('Informe novamente: '))
                 if (valor_deposito > 0):
-                    conta_usuario = conta_usuario + valor_deposito
+                    conta_usuario += valor_deposito
                     print(f'Operação realizada, você depositou {valor_deposito} reais. Seu saldo atual é R$ {conta_usuario}')
 
     elif (escolha_menu == 3):
