@@ -3,10 +3,13 @@
 conta_usuario = 0
 verificacao = True
 
+historico_saque = []
+historico_deposito = []
+
 while (verificacao):
 
     print('---- Bem vindo ao Caixa Eletrônico -----')
-    print('Digite 1 para saque / Digite 2 para depósito / Digite 3 para verificar saldo')
+    print('Digite 1 para saque / Digite 2 para depósito / Digite 3 para verificar saldo / 4 - consultar histórico')
     escolha_menu = int(input('Faça sua escolha: '))
 
     if (escolha_menu == 1):
@@ -16,6 +19,7 @@ while (verificacao):
             if (valor_saque > 0 and conta_usuario >= valor_saque):
                 conta_usuario += valor_saque
                 print(f'Saque realizado no valor de {valor_saque} reais, saldo disponível R$ {conta_usuario}')
+                historico_saque = ['1 - saque',valor_saque,'reais']
             else:
                 while (valor_saque > conta_usuario):
                     print(f'Não é possível realizar a operação, seu saldo atual é de R$ {conta_usuario}')
@@ -23,6 +27,7 @@ while (verificacao):
                 if (valor_saque > 0 and conta_usuario >= valor_saque):
                     conta_usuario += valor_saque
                     print(f'Saque realizado no valor de {valor_saque} reais, saldo disponível R$ {conta_usuario} .')
+                    historico_saque = ['1 - saque', valor_saque, 'reais']
         else:
             break
 
@@ -33,6 +38,7 @@ while (verificacao):
             if (valor_deposito > 0):
                 conta_usuario += valor_deposito
                 print(f'Operação realizada, você depositou R$ {valor_deposito}. Seu saldo atual é R$ {conta_usuario}')
+                historico_deposito = ['2 - deposito',valor_deposito]
             else:
                 while(valor_deposito <= 0):
                     print('Valor inválido, insira uma quantidade maior que 0.')
@@ -40,6 +46,7 @@ while (verificacao):
                 if (valor_deposito > 0):
                     conta_usuario += valor_deposito
                     print(f'Operação realizada, você depositou {valor_deposito} reais. Seu saldo atual é R$ {conta_usuario}')
+                    historico_deposito = ['2 - deposito', valor_deposito]
 
     elif (escolha_menu == 3):
         confirma_escolha = str(input('3 - mostrar saldo atual, confirma? (S/N): '))
@@ -48,10 +55,23 @@ while (verificacao):
         else:
             break
 
-    else:
-        while(escolha_menu != 1 and escolha_menu != 2):
-            escolha_menu = int(input('Valor inválido, insira 1 para saque e 2 para deposito: '))
+    elif (escolha_menu == 4):
+        confirma_escolha_quatro = str(input('4 - Consultar histórico, confirma? (S/N): '))
+        if (confirma_escolha_quatro in 'Ss'):
+            if historico_deposito:
+                print(historico_deposito)
+            else:
+                print('Não há registro de saque')
 
+            if historico_saque:
+                print(historico_saque)
+            else:
+                print('Não há registro de deposito')
+        else:
+            break
+    else:
+        print('Opção inválida')
+        break
 
     confirma_escolha = str(input('Deseja realizar outra operação?(S/N): '))
     if (confirma_escolha in 'Ss'):
