@@ -1,5 +1,7 @@
 # Simulador de Caixa Eletrônico
 
+import sys
+
 conta_usuario = 0
 verificacao = True
 
@@ -32,7 +34,8 @@ while (verificacao):
                     print(f'Saque realizado no valor de {valor_saque} reais, saldo disponível R$ {conta_usuario} .')
                     historico_saque += [contagem_historico,'saque', valor_saque, 'reais']
         else:
-            break
+            print('Encerrando o programa...')
+            sys.exit()
 
     elif (escolha_menu == 2):
         confirma_escolha = str(input('2 - Depósito, confirma? (S/N): '))
@@ -58,7 +61,8 @@ while (verificacao):
         if (confirma_escolha in 'Ss'):
             print(f'Seu saldo atual é {conta_usuario} reais.')
         else:
-            break
+            print('Encerrando o programa...')
+            sys.exit()
 
     elif (escolha_menu == 4):
         confirma_escolha_quatro = str(input('4 - Consultar histórico, confirma? (S/N): '))
@@ -73,10 +77,11 @@ while (verificacao):
             else:
                 print('Não há registro de deposito')
         else:
-            break
+            print('Encerrando o programa...')
+            sys.exit()
     else:
         print('Opção inválida')
-        break
+        sys.exit()
 
     confirma_escolha = str(input('Deseja realizar outra operação?(S/N): '))
     if (confirma_escolha in 'Ss'):
