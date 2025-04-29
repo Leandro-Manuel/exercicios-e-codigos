@@ -4,9 +4,7 @@ import sys
 
 conta_usuario = 0
 verificacao = True
-
 historico_transacao = []
-
 contagem_historico = 0
 
 while (verificacao):
