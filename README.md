@@ -4,4 +4,5 @@
 
 # Objetivo
 🔹O objetivo é armazenar meu aprendizado e prática para futuras consultas
+
 🔹trazer feedback da minha formação em Análise e Desenvolvimento de Sistemas na CESAR School
