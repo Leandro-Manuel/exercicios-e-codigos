@@ -1,5 +1,3 @@
-# Exercicios-e-codigos
-
 # Exercicios em Python, desafios de códigos e prática na lógica de programação
 
 Neste repositório, irei armazenar todos os meus códigos de Python, pequenos projetos, praticar conceitos como POO, funções e várias funcionalidades.
