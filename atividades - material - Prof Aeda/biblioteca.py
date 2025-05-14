@@ -6,8 +6,7 @@ def cadastrar_paciente():
 
     return nome,idade,especialidade,convenio
 
-
-def calcular_valor(especialidade,convenio,idade):
+def calcular_valor(idade,especialidade,convenio):
 
     if especialidade == 1:
         valor = 200
