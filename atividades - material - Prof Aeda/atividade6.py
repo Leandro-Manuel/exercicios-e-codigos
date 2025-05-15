@@ -27,3 +27,4 @@ def calcular_nota():
 media_final = calcular_nota()
 print(media_final)
 
+
