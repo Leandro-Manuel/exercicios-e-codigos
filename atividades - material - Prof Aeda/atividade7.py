@@ -13,7 +13,5 @@ if velocidade > 80:
     acima = velocidade - 80
     valor = acima * 5
     print(f'Você está acima da via, velocidade {velocidade} km/h, multado em {valor} reais.')
-else:
-    print('Velocidade está dentro do limite da via, não foi multado')
 
 
