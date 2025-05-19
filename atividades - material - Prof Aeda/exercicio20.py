@@ -11,21 +11,23 @@
 # total da compra com o desconto aplicado. Além disso, o usuario deve ter a opção
 # de realizar o calculo novamente ou encerrar o programa.
 
-opcao = 'S'
-while (opcao in 'Ss'):
-    valor_total = float(input('Insira o valor total da sua compra: '))
-    qtd_itens = int(input('Insira a quantidade de itens adquiridos: '))
-    valor_desconto = 0
+def calculadora_de_desconto():
+    opcao = 'S'
+    while (opcao in 'Ss'):
+        valor_total = float(input('Insira o valor total da sua compra: '))
+        qtd_itens = int(input('Insira a quantidade de itens adquiridos: '))
 
-    if qtd_itens > 10:
-        valor_desconto = valor_total - (valor_total * 0.1)
-    elif qtd_itens >= 6 and qtd_itens <= 10:
-        valor_desconto = valor_total - (valor_total * 0.05)
-    else:
-        print('Não há desconto')
-    print(f'O valor a ser pago é de {valor_desconto} reais.')
+        if qtd_itens > 10:
+            valor_final = valor_total - (valor_total * 0.1)
+        elif qtd_itens >= 6 and qtd_itens <= 10:
+            valor_final = valor_total - (valor_total * 0.05)
+        else:
+            print('Não há desconto')
+        print(f'O valor a ser pago é de {valor_final} reais.')
 
-    opcao = input('Deseja realizar o calculo novamente?(S/N): ')
+        opcao = input('Deseja realizar o calculo novamente?(S/N): ')
+
+calculadora_de_desconto()
 
 
 
