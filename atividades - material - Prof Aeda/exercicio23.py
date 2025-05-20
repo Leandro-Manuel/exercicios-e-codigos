@@ -10,13 +10,14 @@ somaInteiros = 0
 while True:
     numero = int(input('Insira um número (0 - sair): '))
     if numero == 0:
-        print(f'A soma dos números é {somaInteiros}')
+        print('Saindo')
         break
     elif numero < 0:
         print("Erro, insira um valor positivo!")
         continue
     else:
         somaInteiros += numero
+print(f'A soma total dos números é {somaInteiros}')
 
 # outro código
 
