@@ -14,13 +14,6 @@ for t in range(4):
         soma += matriz[t][r]
 print(f'O total de vendas é: {soma}')
 
-
-
-
-
-
-
-
 vendas_por_ano = [
     [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]
 ]
