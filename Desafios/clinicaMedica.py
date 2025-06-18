@@ -42,23 +42,34 @@ def valor_consulta():
 def boas_vindas():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('--------- Bem vindo ao sistema de gestão de pacientes --------')
-    input('Pressione Enter para continuar...')
+    input('Pressione Enter para continuar')
 while True:
-    boas_vindas()
-    valor = 0
+    try:
+        boas_vindas()
+        valor = 0
+        maiorValor = 0
+        nomeMaior = None
 
-    dados = cadastrar_paciente()
-    idade = dados[1]
-    especialidadeMed = dados[2]
-    convenio = dados[3]
+        dados = cadastrar_paciente()
+        nome = dados[0]
+        idade = dados[1]
+        especialidadeMed = dados[2]
+        convenio = dados[3]
 
-    valor = valor_consulta()
+        valor = valor_consulta()
+        if valor > maiorValor:
+            maiorValor = valor
+            nomeMaior = nome
 
-    print(f'O valor total da sua consulta é {valor} reais.')
 
-    continuar = input('Deseja realizar a operação novamente? (sim / não): ')
-    if continuar != 'sim':
-        break
+        print(f'{nome}, o valor da sua consulta são {valor} reais.')
+
+        continuar = input('Deseja realizar a operação novamente? (sim / não): ')
+        if continuar != 'sim':
+            break
+    except ValueError:
+        print('Valores incorretos, tente novamente...')
+        continue
 
 
 
