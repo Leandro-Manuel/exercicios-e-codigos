@@ -1,3 +1,4 @@
+import os
 def cadastrar_paciente():
     while True:
         try:
@@ -16,11 +17,12 @@ def cadastrar_paciente():
                 else:
                     break
             return nome_paciente, idade_paciente, especialidadeMed, convenio
-            break
         except ValueError:
             print('Valores inválidos, tente novamente...')
+        break
 
 def valor_consulta():
+    global valor
     match (especialidadeMed):
         case 1:
             valor = 100
@@ -38,14 +40,21 @@ def valor_consulta():
     return valor
 
 def boas_vindas():
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('--------- Bem vindo ao sistema de gestão de pacientes --------')
     input('Pressione Enter para continuar...')
 while True:
     boas_vindas()
+    valor = 0
 
-    cadastrar_paciente()
+    dados = cadastrar_paciente()
+    idade = dados[1]
+    especialidadeMed = dados[2]
+    convenio = dados[3]
 
-    valor_consulta()
+    valor = valor_consulta()
+
+    print(f'O valor total da sua consulta é {valor} reais.')
 
     continuar = input('Deseja realizar a operação novamente? (sim / não): ')
     if continuar != 'sim':
