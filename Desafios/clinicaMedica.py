@@ -1,4 +1,5 @@
 import os
+
 valor = 0
 maiorValor = 0
 valorTotal = 0
@@ -6,14 +7,17 @@ nomeMaior = None
 idade = 0
 convenio = None
 qtdCardiologia = qtdPediatria = qtdClinicaGeral = 0
+especialidadeMed = None
+
+
 def cadastrar_paciente():
     while True:
         try:
             nome_paciente = input('Insira o seu nome: ')
             idade_paciente = int(input('Insira a sua idade: '))
             while True:
-                especialidadeMed = int(input('Qual é a sua especialidade? (1 - cardiologia, 2 - pediatria, 3 - clinica geral): '))
-                if (especialidadeMed != 1) and (especialidadeMed != 2) and (especialidadeMed != 3):
+                especialidade = int(input('Qual é a sua especialidade? (1 - cardiologia, 2 - pediatria, 3 - clinica geral): '))
+                if (especialidade != 1) and (especialidade != 2) and (especialidade != 3):
                     continue
                 else:
                     break
@@ -28,13 +32,12 @@ def cadastrar_paciente():
                     break
                 else:
                     continue
-            return nome_paciente, idade_paciente, especialidadeMed, convenio
+            return nome_paciente, idade_paciente, especialidade, convenio
         except ValueError:
             print('Valores inválidos, tente novamente...')
         break
 
-def valor_consulta():
-    global valor, especialidadeMed, convenio, idade
+def valor_consulta(valor, especialidadeMed, convenio, idade):
     match (especialidadeMed):
         case 1:
             valor = 100
@@ -85,7 +88,7 @@ def menu():
                 case 3:
                     qtdClinicaGeral += 1
 
-            valor = valor_consulta()
+            valor = valor_consulta(valor, especialidadeMed, convenio, idade)
             if valor > maiorValor:
                 maiorValor = valor
                 nomeMaior = nome
@@ -102,6 +105,7 @@ def menu():
             print('Valores incorretos, tente novamente...')
             continue
 
+menu()
 
 
 
