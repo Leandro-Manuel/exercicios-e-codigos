@@ -1,4 +1,11 @@
 import os
+valor = 0
+maiorValor = 0
+valorTotal = 0
+nomeMaior = None
+idade = 0
+convenio = None
+qtdCardiologia = qtdPediatria = qtdClinicaGeral = 0
 def cadastrar_paciente():
     while True:
         try:
@@ -15,6 +22,7 @@ def cadastrar_paciente():
                 if convenio != 'sim' and convenio != 'não':
                     continue
                 else:
+                    convenio = True
                     break
             return nome_paciente, idade_paciente, especialidadeMed, convenio
         except ValueError:
@@ -22,7 +30,7 @@ def cadastrar_paciente():
         break
 
 def valor_consulta():
-    global valor
+    global valor, especialidadeMed, convenio, idade
     match (especialidadeMed):
         case 1:
             valor = 100
@@ -48,51 +56,47 @@ def relatorio(a,b,c,d,e,f):
     print(f'O valor total arrecadado foi {d} reais.')
     print(f'Paciente com o maior pagamento: {e} ({f} reais).')
 
-valor = 0
-maiorValor = 0
-valorTotal = 0
-nomeMaior = None
-qtdCardiologia = qtdPediatria = qtdClinicaGeral = 0
 def boas_vindas():
     os.system('cls' if os.name == 'nt' else 'clear')
     print('--------- Bem vindo ao sistema de gestão de pacientes --------')
     input('Pressione Enter para continuar')
-while True:
-    try:
-        boas_vindas()
-        global valor, maiorValor, valorTotal, nomeMaior
-        global qtdCardiologia, qtdPediatria, qtdClinicaGeral
 
-        dados = cadastrar_paciente()
-        nome = dados[0]
-        idade = dados[1]
-        especialidadeMed = dados[2]
-        convenio = dados[3]
+def menu():
+    while True:
+        try:
+            boas_vindas()
+            global valor, maiorValor, valorTotal, nomeMaior, qtdCardiologia, qtdPediatria, qtdClinicaGeral, idade, convenio
 
-        match (especialidadeMed):
-            case 1:
-                qtdCardiologia += 1
-            case 2:
-                qtdPediatria += 1
-            case 3:
-                qtdClinicaGeral += 1
+            dados = cadastrar_paciente()
+            nome = dados[0]
+            idade = dados[1]
+            especialidadeMed = dados[2]
+            convenio = dados[3]
 
-        valor = valor_consulta()
-        if valor > maiorValor:
-            maiorValor = valor
-            nomeMaior = nome
+            match (especialidadeMed):
+                case 1:
+                    qtdCardiologia += 1
+                case 2:
+                    qtdPediatria += 1
+                case 3:
+                    qtdClinicaGeral += 1
 
-        valorTotal += valor
-        print(f'{nome}, o valor da sua consulta são {valor} reais.')
+            valor = valor_consulta()
+            if valor > maiorValor:
+                maiorValor = valor
+                nomeMaior = nome
 
-        continuar = input('Deseja realizar a operação novamente? (sim / não): ')
-        if continuar != 'sim':
-            relatorio(qtdClinicaGeral, qtdPediatria, qtdCardiologia, valorTotal, nomeMaior, maiorValor)
-            break
+            valorTotal += valor
+            print(f'{nome}, o valor da sua consulta são {valor} reais.')
 
-    except ValueError:
-        print('Valores incorretos, tente novamente...')
-        continue
+            continuar = input('Deseja realizar a operação novamente? (sim / não): ')
+            if continuar != 'sim':
+                relatorio(qtdClinicaGeral, qtdPediatria, qtdCardiologia, valorTotal, nomeMaior, maiorValor)
+                break
+
+        except ValueError:
+            print('Valores incorretos, tente novamente...')
+            continue
 
 
 
