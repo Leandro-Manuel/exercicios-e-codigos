@@ -19,11 +19,15 @@ def cadastrar_paciente():
                     break
             while True:
                 convenio = input('Você tem convênio médico? (sim / não): ')
-                if convenio != 'sim' and convenio != 'não':
-                    continue
-                else:
+
+                if convenio == 'sim':
                     convenio = True
                     break
+                elif convenio == 'não':
+                    convenio = False
+                    break
+                else:
+                    continue
             return nome_paciente, idade_paciente, especialidadeMed, convenio
         except ValueError:
             print('Valores inválidos, tente novamente...')
@@ -39,7 +43,7 @@ def valor_consulta():
         case 3:
             valor = 200
 
-    if convenio == 'sim':
+    if convenio == True:
         valor = valor - (valor * 0.5)
 
     if idade < 12 or idade > 65:
